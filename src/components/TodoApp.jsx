@@ -6,6 +6,7 @@ const TodoApp = ({
   tasks,
   addTask,
   inputTask,
+  redirectToError,
 }) => (
   <div>
     <input type="text" onChange={e => inputTask(e.target.value)} />
@@ -17,6 +18,7 @@ const TodoApp = ({
         ))
       }
     </ul>
+    <button onClick={() => redirectToError()}>エラーページへ</button>
   </div>
 );
 
