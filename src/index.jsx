@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import tasksReducer from './reducers/tasks';
+import { ConnectedRouter } from 'react-router-redux';
+import createBrowserHistory from 'history/createBrowserHistory';
 import TodoApp from './containers/TodoApp';
+import createStore from './store';
 
-const store = createStore(tasksReducer);
+// historyインスタンスの生成
+const history = createBrowserHistory();
+
+// Storeの生成
+const store = createStore(history);
 
 ReactDom.render(
   <Provider store={store}>
-    <TodoApp />
+    <ConnectedRouter history={history}>
+      <TodoApp />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),
 );
