@@ -1,27 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { inputTask, addTask } from '../actions/tasks';
 
-const TodoApp = ({ store }) => {
-  const { task, tasks } = store.getState();
-
-  return (
-    <div>
-      <input type="text" onChange={e => store.dispatch(inputTask(e.target.value))} />
-      <input type="button" value="add" onClick={() => store.dispatch(addTask(task))} />
-      <ul>
-        {
-          tasks.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))
-        }
-      </ul>
-    </div>
-  );
-};
+const TodoApp = ({
+  task,
+  tasks,
+  addTask,
+  inputTask,
+}) => (
+  <div>
+    <input type="text" onChange={e => inputTask(e.target.value)} />
+    <input type="button" value="add" onClick={() => addTask(task)} />
+    <ul>
+      {
+        tasks.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))
+      }
+    </ul>
+  </div>
+);
 
 TodoApp.propTypes = {
-  store: PropTypes.object.isRequired,
+  task: PropTypes.string.isRequired,
+  tasks: PropTypes.array.isRequired,
+  addTask: PropTypes.func.isRequired,
+  inputTask: PropTypes.func.isRequired,
 };
 
 export default TodoApp;
