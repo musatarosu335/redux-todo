@@ -4,14 +4,17 @@ import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 import TodoApp from './containers/TodoApp';
 import Error from './components/Error';
 import createStore from './store';
 
 // historyインスタンスの生成
 const history = createBrowserHistory();
+
 // Storeの生成
-const store = createStore(history);
+const store = createStore(history, logger, thunk);
 
 ReactDom.render(
   <Provider store={store}>
