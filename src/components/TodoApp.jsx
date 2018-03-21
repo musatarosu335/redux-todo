@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 const TodoApp = ({
   task,
   tasks,
-  asyncAddTask,
+  addTaskAndClear,
   inputTask,
   redirectToError,
 }) => (
   <div>
-    <input type="text" onChange={e => inputTask(e.target.value)} />
-    <input type="button" value="add" onClick={() => asyncAddTask(task)} />
+    <input type="text" value={task} onChange={e => inputTask(e.target.value)} />
+    <input type="button" value="add" onClick={() => addTaskAndClear(task)} />
     <ul>
       {
         tasks.map((item, i) => (
@@ -25,8 +25,9 @@ const TodoApp = ({
 TodoApp.propTypes = {
   task: PropTypes.string.isRequired,
   tasks: PropTypes.array.isRequired,
-  asyncAddTask: PropTypes.func.isRequired,
+  addTaskAndClear: PropTypes.func.isRequired,
   inputTask: PropTypes.func.isRequired,
+  redirectToError: PropTypes.func.isRequired,
 };
 
 export default TodoApp;

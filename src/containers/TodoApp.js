@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import TodoApp from '../components/TodoApp';
-import { inputTask, asyncAddTask } from '../actions/tasks';
+import { inputTask, addTaskAndClear } from '../actions/tasks';
 
 const mapStateToProps = ({ tasks }) => ({
   task: tasks.task,
@@ -9,8 +9,8 @@ const mapStateToProps = ({ tasks }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  asyncAddTask(task) {
-    dispatch(asyncAddTask(task));
+  addTaskAndClear(task) {
+    dispatch(addTaskAndClear(task));
   },
   inputTask(task) {
     dispatch(inputTask(task));

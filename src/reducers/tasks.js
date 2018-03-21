@@ -10,6 +10,11 @@ const tasksReducer = (state = initialState, action) => {
         ...state,
         task: action.payload.task,
       };
+    case 'UPDATE_INPUT':
+      return {
+        ...state,
+        task: action.payload.value,
+      };
     case 'ADD_TASK':
       return {
         ...state,

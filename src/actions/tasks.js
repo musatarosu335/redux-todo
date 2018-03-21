@@ -15,10 +15,24 @@ export const addTask = task => ({
   },
 });
 
+export const updateInput = value => ({
+  type: 'UPDATE_INPUT',
+  payload: {
+    value,
+  },
+});
+
 export const asyncAddTask = task => (
-  (dispatch, getState) => {
+  (dispatch) => {
     setTimeout(() => {
       dispatch(addTask(task));
     }, 1000);
+  }
+);
+
+export const addTaskAndClear = task => (
+  (dispatch) => {
+    dispatch(asyncAddTask(task));
+    dispatch(updateInput(''));
   }
 );
