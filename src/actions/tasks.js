@@ -36,3 +36,22 @@ export const addTaskAndClear = task => (
     dispatch(updateInput(''));
   }
 );
+
+export const addUniqueTask = task => (
+  (dispatch, getState) => {
+    const {
+      tasks: {
+        tasks,
+      },
+    } = getState();
+
+    const isDeplicated = tasks.some(indTask => (
+      indTask === task
+    ));
+
+    if (isDeplicated) {
+      return;
+    }
+    dispatch(addTaskAndClear(task));
+  }
+);
